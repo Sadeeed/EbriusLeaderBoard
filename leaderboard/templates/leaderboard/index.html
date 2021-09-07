@@ -1,6 +1,44 @@
-{% for player in player_list %}
-<p>{{ player.name }}</p>
-{% endfor %}
+{% extends 'base.html' %}
+
+{% block title %}Leaderboard{% endblock %}
+
+{% block content %}
+
+<table class="table table-dark table-striped table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Score</th>
+        <th scope="col">Dropper</th>
+        <th scope="col">Death to Merchants</th>
+        <th scope="col">Event 03</th>
+        <th scope="col">Event 04</th>
+        <th scope="col">Event 05</th>
+        <th scope="col">Event 06</th>
+        <th scope="col">Event 07</th>
+        <th scope="col">Event 08</th>
+        <th scope="col">Event 09</th>
+        <th scope="col">Event 10</th>
+        <th scope="col">Event 11</th>
+        <th scope="col">Event 12</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for player in player_list %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td><img src="{{ player.imageUrl }}" alt="" width="16" height="16"> {{ player.name }}</td>
+            <td>{{ player.events.first.points }}</td> <!-- Total Score -->
+            {% for event in player.events.all %}
+            <td>{{ event.points }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+
+{% endblock %}
 
 {% block pagination %}
     {% if is_paginated %}

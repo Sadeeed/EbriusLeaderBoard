@@ -8,3 +8,4 @@ class Index(generic.ListView):
     model = Player
     template_name = 'leaderboard/index.html'
     paginate_by = 10
+    ordering = ['-id']

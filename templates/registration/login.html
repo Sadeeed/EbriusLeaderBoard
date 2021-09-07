@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="mask d-flex align-items-center min-vh-100">
+    <div class="container h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                <div class="card" style="border-radius: 15px; background-color: #202020">
+                    <div class="card-body p-5" style="color: #FFFFFF;">
+                        <h2 class="text-center mb-5" style="color: #FFFFFF;">Login</h2>
+
+                        {% if form.error %}
+                        <div class="alert alert-danger" role='alert'>
+                            Something went wrong please try again
+                        </div>
+                        {% endif %}
+                        
+                        {% if next %}
+                        <div class="alert alert-danger text-center" role="alert">
+                            You are either not logged in or the specified user doesnt exist
+                        </div>   
+                        {% endif %}
+                    
+                        <form action="{% url 'login' %}" method="post">
+                            {% csrf_token %}
+
+                            <div class="text-center">
+                                <p>Username: {{ form.username }}</p>
+                                <p>Password: {{ form.password }}</p>
+                            </div>
+
+                            <div class="text-center mt-5">
+                                <input type="submit" value="Login" class="btn btn-outline-light">
+                                <input type="hidden" name="next" value="{% url 'home' %}">
+                            </div>
+                    
+                        </form>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
