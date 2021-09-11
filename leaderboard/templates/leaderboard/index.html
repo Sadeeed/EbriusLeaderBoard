@@ -4,39 +4,92 @@
 
 {% block content %}
 
-<table class="table table-dark table-striped table-hover">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Name</th>
-        <th scope="col">Score</th>
-        <th scope="col">Dropper</th>
-        <th scope="col">Death to Merchants</th>
-        <th scope="col">Event 03</th>
-        <th scope="col">Event 04</th>
-        <th scope="col">Event 05</th>
-        <th scope="col">Event 06</th>
-        <th scope="col">Event 07</th>
-        <th scope="col">Event 08</th>
-        <th scope="col">Event 09</th>
-        <th scope="col">Event 10</th>
-        <th scope="col">Event 11</th>
-        <th scope="col">Event 12</th>
-      </tr>
-    </thead>
-    <tbody>
-        {% for player in player_list %}
-        <tr>
-            <td>{{ forloop.counter }}</td>
-            <td><img src="{{ player.imageUrl }}" alt="" width="16" height="16"> {{ player.name }}</td>
-            <td>{{ player.events.first.points }}</td> <!-- Total Score -->
-            {% for event in player.events.all %}
-            <td>{{ event.points }}</td>
-            {% endfor %}
-        </tr>
-        {% endfor %}
-    </tbody>
-  </table>
+
+<!-- <div class="row justify-content-center">
+    <div class="col-auto">
+        <table class="table table-dark table-striped table-hover table-responsive">
+            <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Score</th>
+                  <th scope="col">Dropper</th>
+                  <th scope="col">Death to Merchants</th>
+                  <th scope="col">Event 03</th>
+                  <th scope="col">Event 04</th>
+                  <th scope="col">Event 05</th>
+                  <th scope="col">Event 06</th>
+                  <th scope="col">Event 07</th>
+                  <th scope="col">Event 08</th>
+                  <th scope="col">Event 09</th>
+                  <th scope="col">Event 10</th>
+                  <th scope="col">Event 11</th>
+                  <th scope="col">Event 12</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for player in player_list %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td><img src="{{ player.imageUrl }}" alt="" width="16" height="16"> {{ player.name }}</td>
+                    <td>{{ player.events.first.points }}</td>
+                    {% for event in player.events.all %}
+                    <td>{{ event.points }}</td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </tbody>  
+        </table>
+    </div>
+</div> -->
+
+
+<div class="card m-3" style="background-color: #202020; margin-top: auto;">
+    <div class="card-body">
+        <table class="table table-borderless table-dark table-striped table-hover table-responsive">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Score</th>
+                <th scope="col">Dropper</th>
+                <th scope="col">Death to Merchants</th>
+                <th scope="col">Event 03</th>
+                <th scope="col">Event 04</th>
+                <th scope="col">Event 05</th>
+                <th scope="col">Event 06</th>
+                <th scope="col">Event 07</th>
+                <th scope="col">Event 08</th>
+                <th scope="col">Event 09</th>
+                <th scope="col">Event 10</th>
+                <th scope="col">Event 11</th>
+                <th scope="col">Event 12</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for player in player_list %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td><img src="{{ player.imageUrl }}" alt="" width="16" height="16"> {{ player.name }}</td>
+                    <td>{{ player.total }}</td>
+                    <td>{{ player.event01 }}</td>
+                    <td>{{ player.event02 }}</td>
+                    <td>{{ player.event03 }}</td>
+                    <td>{{ player.event04 }}</td>
+                    <td>{{ player.event05 }}</td>
+                    <td>{{ player.event06 }}</td>
+                    <td>{{ player.event07 }}</td>
+                    <td>{{ player.event08 }}</td>
+                    <td>{{ player.event09 }}</td>
+                    <td>{{ player.event10 }}</td>
+                    <td>{{ player.event11 }}</td>
+                    <td>{{ player.event12 }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
 
 {% endblock %}
 
