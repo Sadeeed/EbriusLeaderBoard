@@ -1,6 +1,8 @@
 from leaderboard.managers import PlayerManager
 from django.db import models
 from django.db.models import F
+from django.db.models.signals import pre_save, post_save
+from django.dispatch import receiver
 from mojang import MojangAPI
 
 
@@ -8,7 +10,8 @@ class Player(models.Model):
     name = models.CharField(max_length=256)
     uuid = models.CharField(
         max_length=32, blank=True)
-    imageUrl = models.URLField(default='https://www.mc-heads.net/avatar/MHF_Steve/32')
+    imageUrl = models.URLField(
+        default='https://www.mc-heads.net/avatar/MHF_Steve/32')
     event01 = models.IntegerField(default=0)
     event02 = models.IntegerField(default=0)
     event03 = models.IntegerField(default=0)
@@ -30,23 +33,11 @@ class Player(models.Model):
         F('event10') + F('event11') + F('event12'),
     )
 
-    def save(self, *args, **kwargs):
-        if self.name:
-            self.uuid = MojangAPI.get_uuid(self.name)
-            self.imageUrl = (f"https://www.mc-heads.net/avatar/{self.uuid}/32")
-        return super().save(self, *args, **kwargs)
-
     def __str__(self):
         return self.name
 
-# class Event(models.Model):
-#     player = models.ForeignKey(
-#         Player, on_delete=models.CASCADE, related_name='events')
-#     eventId = models.IntegerField()
-#     points = models.IntegerField()
 
-#     class Meta:
-#         ordering = ['id']
-
-#     def __str__(self):
-#         return str(self.eventId)
+@receiver(pre_save, sender=Player)
+def get_data(sender, instance, *args, **kwargs):
+    instance.uuid = MojangAPI.get_uuid(instance.name)
+    instance.imageUrl = (f"https://www.mc-heads.net/avatar/{instance.uuid}/32")
