@@ -2,6 +2,6 @@
 
 ## Ebrius Games Leaderboard
 
-+ Basic Leaderboard
-+ fetch uuid and image from player name
-+ Make a frontend
+- [x] Basic Leaderboard
+- [x] fetch uuid and image from player name
+- [x] Make a frontend
