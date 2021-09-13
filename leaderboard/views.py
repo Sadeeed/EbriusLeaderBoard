@@ -8,7 +8,7 @@ from django.db.models import Max
 class Index(generic.ListView):
     model = Player
     template_name = 'leaderboard/index.html'
-    paginate_by = 14
+    paginate_by = 20
     ordering = ['-total']
 
 
