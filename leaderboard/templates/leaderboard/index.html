@@ -7,10 +7,10 @@
   <div class="card-body">
     <div class="responsiveWrap" style="overflow-x: auto;">
       <table class="table table-borderless table-dark table-striped table-hover table-responsive-stack">
-        <thead>
+        <thead class="text-center">
           <tr>
             <th scope="col">Pos</th>
-            <th scope="col">Name</th>
+            <th class="text-start" scope="col">Name</th>
             <th scope="col">Score</th>
             <th scope="col">Dropper</th>
             <th scope="col">Death to Merchants</th>
@@ -29,7 +29,7 @@
             {% endif %}
           </tr>
         </thead>
-        <tbody>
+        <tbody class="text-center">
           {% for player in player_list %}
             <tr>
               {% if forloop.counter == 1 %}
@@ -37,7 +37,7 @@
               {% else %}
               <td>{{ forloop.counter }}</td>
               {% endif %}
-              <td>
+              <td class="text-start">
                 <img src="{{ player.imageUrl }}" alt="" 
                  width="16" height="16" /> {{ player.name }}
               </td>
