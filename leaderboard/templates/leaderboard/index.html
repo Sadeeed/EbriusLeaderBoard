@@ -15,7 +15,7 @@
             <th scope="col">Dropper</th>
             <th scope="col">Death to Merchants</th>
             <th scope="col">Decapitation Station</th>
-            <th scope="col">Event 04</th>
+            <!-- <th scope="col">Event 04</th>
             <th scope="col">Event 05</th>
             <th scope="col">Event 06</th>
             <th scope="col">Event 07</th>
@@ -23,7 +23,7 @@
             <th scope="col">Event 09</th>
             <th scope="col">Event 10</th>
             <th scope="col">Event 11</th>
-            <th scope="col">Event 12</th>
+            <th scope="col">Event 12</th> -->
             {% if user.is_superuser %}
             <th>Actions</th>
             {% endif %}
@@ -45,7 +45,7 @@
               <td>{{ player.event01 }}</td>
               <td>{{ player.event02 }}</td>
               <td>{{ player.event03 }}</td>
-              <td>{{ player.event04 }}</td>
+              <!-- <td>{{ player.event04 }}</td>
               <td>{{ player.event05 }}</td>
               <td>{{ player.event06 }}</td>
               <td>{{ player.event07 }}</td>
@@ -53,7 +53,7 @@
               <td>{{ player.event09 }}</td>
               <td>{{ player.event10 }}</td>
               <td>{{ player.event11 }}</td>
-              <td>{{ player.event12 }}</td>
+              <td>{{ player.event12 }}</td> -->
               {% if user.is_superuser %}
                 <td class="text-center">
                   <a href="{% url 'dashboard' player.id %}"
